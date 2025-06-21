@@ -1,7 +1,6 @@
 # WeatherInsights 🌤️
 
 A modern, interactive weather dashboard built with React, Next.js, and Chart.js. Get real-time weather data and beautiful 5-day forecasts with dynamic theming based on current conditions.
-
 ## ✨ Features
 
 - **🌍 Geolocation Support**: Automatically detects your location for instant weather data
@@ -19,6 +18,8 @@ A modern, interactive weather dashboard built with React, Next.js, and Chart.js.
 - **Charts**: Chart.js, react-chartjs-2
 - **Icons**: Lucide React
 - **API**: OpenWeather API
+  
+**Live** - https://whether-insights.vercel.app/
 
 ## 🚀 Getting Started
 
