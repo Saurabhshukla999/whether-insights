@@ -27,13 +27,11 @@ export function EnhancedHero() {
     initial: {
       opacity: 0,
       y: 50,
-      rotateX: -90,
       scale: 0.5,
     },
     animate: {
       opacity: 1,
       y: 0,
-      rotateX: 0,
       scale: 1,
     },
   }
@@ -48,11 +46,10 @@ export function EnhancedHero() {
   }
 
   const socialVariants = {
-    initial: { scale: 0, rotate: -180 },
-    animate: { scale: 1, rotate: 0 },
+    initial: { scale: 0, opacity: 0 },
+    animate: { scale: 1, opacity: 1 },
     whileHover: {
-      scale: 1.2,
-      rotate: 5,
+      scale: 1.1,
       boxShadow: "0 10px 30px rgba(59, 130, 246, 0.3)",
       transition: { duration: 0.3, ease: easings.bounce },
     },
@@ -101,22 +98,14 @@ export function EnhancedHero() {
           }}
         />
 
-        {/* Floating geometric shapes */}
+        {/* Static geometric shapes - removed floating animation */}
         {Array.from({ length: 6 }, (_, i) => (
           <motion.div
             key={i}
             className="absolute w-2 h-20 bg-gradient-to-b from-blue-400/20 to-transparent"
-            animate={{
-              rotate: [0, 360],
-              scale: [1, 1.5, 1],
-              opacity: [0.2, 0.8, 0.2],
-            }}
-            transition={{
-              duration: 8 + i * 2,
-              repeat: Number.POSITIVE_INFINITY,
-              ease: easings.organic,
-              delay: i * 0.5,
-            }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 0.6 }}
+            transition={{ delay: i * 0.2, duration: 1 }}
             style={{
               left: `${20 + i * 15}%`,
               top: `${30 + i * 10}%`,
@@ -143,13 +132,13 @@ export function EnhancedHero() {
           </motion.p>
         </motion.div>
 
-        {/* Sophisticated name animation */}
+        {/* Sophisticated name animation - removed rotation */}
         <motion.div variants={containerVariants} animate="animate">
           <h1 className="text-5xl md:text-7xl font-bold mb-6 perspective-1000">
             <motion.span
               className="inline-block text-white mr-4"
-              initial={{ opacity: 0, x: -50, rotateY: -90 }}
-              animate={{ opacity: 1, x: 0, rotateY: 0 }}
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 1.2, delay: 0.8, ease: easings.elastic }}
             >
               Hi, I'm
@@ -168,7 +157,6 @@ export function EnhancedHero() {
                   className="inline-block bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent"
                   whileHover={{
                     scale: 1.2,
-                    rotateY: 15,
                     textShadow: "0 0 20px rgba(59, 130, 246, 0.5)",
                     transition: { duration: 0.3 },
                   }}
@@ -237,7 +225,7 @@ export function EnhancedHero() {
           , and modern web technologies. Passionate about creating performant, accessible, and beautiful interfaces.
         </motion.p>
 
-        {/* Enhanced social links */}
+        {/* Enhanced social links - removed floating animation */}
         <motion.div
           className="flex justify-center space-x-8 mb-12"
           variants={animations.staggerContainer}
@@ -318,22 +306,26 @@ export function EnhancedHero() {
           </motion.a>
         </motion.div>
 
-        {/* Enhanced scroll indicator */}
+        {/* Enhanced scroll indicator - removed floating animation */}
         <motion.div
           className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 4, ease: easings.smooth }}
         >
-          <motion.div
-            animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY, ease: easings.organic }}
-            className="flex flex-col items-center space-y-2"
-          >
+          <motion.div className="flex flex-col items-center space-y-2">
             <span className="text-gray-400 text-sm tracking-wider">Scroll to explore</span>
             <motion.div
               whileHover={{ scale: 1.2, color: "#60A5FA" }}
               className="p-2 border border-gray-600 rounded-full"
+              animate={{
+                y: [0, 8, 0],
+              }}
+              transition={{
+                duration: 2,
+                repeat: Number.POSITIVE_INFINITY,
+                ease: easings.organic,
+              }}
             >
               <ChevronDown size={20} className="text-gray-400" />
             </motion.div>

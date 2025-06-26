@@ -48,19 +48,17 @@ export const animations = {
     },
   },
 
-  // Premium slide in from left
+  // Premium slide in from left - removed rotation
   slideInPremium: {
     initial: {
       x: -100,
       opacity: 0,
       scale: 0.9,
-      rotateY: -15,
     },
     animate: {
       x: 0,
       opacity: 1,
       scale: 1,
-      rotateY: 0,
     },
     transition: {
       duration: 1,
@@ -68,16 +66,14 @@ export const animations = {
     },
   },
 
-  // Sophisticated scale with rotation
+  // Sophisticated scale - removed rotation
   scaleRotate: {
     initial: {
       scale: 0,
-      rotate: -180,
       opacity: 0,
     },
     animate: {
       scale: 1,
-      rotate: 0,
       opacity: 1,
     },
     transition: {
@@ -102,11 +98,10 @@ export const animations = {
     },
   },
 
-  // Floating with rotation
+  // Floating without rotation
   floatRotate: {
     animate: {
       y: [-10, 10, -10],
-      rotate: [0, 5, 0, -5, 0],
       scale: [1, 1.02, 1],
     },
     transition: {
@@ -126,12 +121,11 @@ export const animations = {
     },
   },
 
-  // Premium hover effect
+  // Premium hover effect - removed rotation
   hoverLift: {
     whileHover: {
       y: -8,
       scale: 1.02,
-      rotateX: 5,
       boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.5)",
       transition: { duration: 0.3, ease: easings.smooth },
     },
@@ -142,14 +136,14 @@ export const animations = {
   },
 }
 
-// Sophisticated scroll animations
+// Sophisticated scroll animations - removed rotation
 export const scrollAnimations = {
   parallaxSlow: (scrollY: number) => ({
-    transform: `translate3d(0, ${scrollY * 0.1}px, 0) rotateX(${scrollY * 0.01}deg)`,
+    transform: `translate3d(0, ${scrollY * 0.1}px, 0)`,
   }),
 
   parallaxMedium: (scrollY: number) => ({
-    transform: `translate3d(0, ${scrollY * 0.3}px, 0) rotateY(${scrollY * 0.02}deg)`,
+    transform: `translate3d(0, ${scrollY * 0.3}px, 0)`,
   }),
 
   parallaxFast: (scrollY: number) => ({

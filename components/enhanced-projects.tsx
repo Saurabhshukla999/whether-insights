@@ -69,14 +69,12 @@ export function EnhancedProjects() {
       opacity: 0,
       y: 100,
       scale: 0.8,
-      rotateX: -15,
       filter: "blur(10px)",
     },
     animate: {
       opacity: 1,
       y: 0,
       scale: 1,
-      rotateX: 0,
       filter: "blur(0px)",
     },
     transition: {
@@ -171,16 +169,15 @@ export function EnhancedProjects() {
                   whileHover={{ scale: 1.02 }}
                   transition={{ duration: 0.3, ease: easings.smooth }}
                 >
-                  {/* Floating badge */}
+                  {/* Floating badge - removed rotation */}
                   <motion.div
                     className={`absolute -top-4 -right-4 px-4 py-2 bg-gradient-to-r ${project.gradient} rounded-full text-white text-sm font-semibold shadow-lg`}
-                    initial={{ scale: 0, rotate: -180 }}
-                    whileInView={{ scale: 1, rotate: 0 }}
+                    initial={{ scale: 0, opacity: 0 }}
+                    whileInView={{ scale: 1, opacity: 1 }}
                     transition={{ duration: 0.8, delay: 0.5, ease: easings.bounce }}
                     viewport={{ once: true }}
                     whileHover={{
                       scale: 1.1,
-                      rotate: 5,
                       boxShadow: "0 10px 30px rgba(0,0,0,0.3)",
                     }}
                   >
@@ -253,7 +250,7 @@ export function EnhancedProjects() {
                       </ul>
                     </motion.div>
 
-                    {/* Enhanced tech stack */}
+                    {/* Enhanced tech stack - removed rotation */}
                     <motion.div
                       className="flex flex-wrap gap-3 mb-8"
                       initial={{ opacity: 0, y: 20 }}
@@ -265,8 +262,8 @@ export function EnhancedProjects() {
                         <motion.span
                           key={tech}
                           className={`px-4 py-2 bg-${project.accentColor}-500/20 text-${project.accentColor}-300 rounded-full text-sm font-medium border border-${project.accentColor}-500/30`}
-                          initial={{ scale: 0, rotate: -180 }}
-                          whileInView={{ scale: 1, rotate: 0 }}
+                          initial={{ scale: 0, opacity: 0 }}
+                          whileInView={{ scale: 1, opacity: 1 }}
                           transition={{
                             duration: 0.5,
                             delay: 1.2 + i * 0.1,
@@ -283,7 +280,7 @@ export function EnhancedProjects() {
                       ))}
                     </motion.div>
 
-                    {/* Enhanced action buttons */}
+                    {/* Enhanced action buttons - removed floating animation from icons */}
                     <motion.div
                       className="flex space-x-4"
                       initial={{ opacity: 0, y: 20 }}
@@ -302,7 +299,7 @@ export function EnhancedProjects() {
                         }}
                         whileTap={{ scale: 0.95 }}
                       >
-                        <Github size={18} className="group-hover:rotate-12 transition-transform duration-300" />
+                        <Github size={18} className="group-hover:scale-110 transition-transform duration-300" />
                         <span className="text-white font-medium">Code</span>
                       </motion.a>
 
@@ -326,7 +323,7 @@ export function EnhancedProjects() {
                           />
                           <ExternalLink
                             size={18}
-                            className="relative z-10 group-hover:rotate-12 transition-transform duration-300"
+                            className="relative z-10 group-hover:scale-110 transition-transform duration-300"
                           />
                           <span className="relative z-10 text-white font-medium">Live Demo</span>
                         </motion.a>
@@ -336,7 +333,7 @@ export function EnhancedProjects() {
                 </motion.div>
               </div>
 
-              {/* Enhanced Project Visual */}
+              {/* Enhanced Project Visual - removed text rotation */}
               <div className={index % 2 === 1 ? "lg:col-start-1" : ""}>
                 <motion.div
                   className="relative group"
@@ -370,37 +367,12 @@ export function EnhancedProjects() {
                         className="text-6xl font-bold text-white/90 relative z-10"
                         whileHover={{
                           scale: 1.1,
-                          rotate: 5,
                           textShadow: "0 0 30px rgba(255,255,255,0.5)",
                         }}
                         transition={{ duration: 0.3 }}
                       >
                         {project.title}
                       </motion.div>
-
-                      {/* Floating elements */}
-                      {Array.from({ length: 3 }, (_, i) => (
-                        <motion.div
-                          key={i}
-                          className="absolute w-4 h-4 bg-white/30 rounded-full"
-                          animate={{
-                            x: [0, 50, 0],
-                            y: [0, -30, 0],
-                            scale: [1, 1.5, 1],
-                            opacity: [0.3, 0.8, 0.3],
-                          }}
-                          transition={{
-                            duration: 4 + i,
-                            repeat: Number.POSITIVE_INFINITY,
-                            ease: easings.organic,
-                            delay: i * 0.5,
-                          }}
-                          style={{
-                            left: `${20 + i * 30}%`,
-                            top: `${30 + i * 20}%`,
-                          }}
-                        />
-                      ))}
                     </motion.div>
 
                     {/* Glow effect */}
@@ -410,32 +382,21 @@ export function EnhancedProjects() {
                     />
                   </div>
 
-                  {/* Floating decorative elements */}
+                  {/* Static decorative elements - removed floating animation */}
                   <motion.div
                     className={`absolute -top-6 -right-6 w-12 h-12 bg-gradient-to-r ${project.gradient} rounded-full opacity-60`}
-                    animate={{
-                      rotate: [0, 360],
-                      scale: [1, 1.2, 1],
-                    }}
-                    transition={{
-                      duration: 8,
-                      repeat: Number.POSITIVE_INFINITY,
-                      ease: easings.organic,
-                    }}
+                    initial={{ scale: 0 }}
+                    whileInView={{ scale: 1 }}
+                    transition={{ duration: 0.5, delay: 0.3 }}
+                    viewport={{ once: true }}
                   />
 
                   <motion.div
                     className={`absolute -bottom-4 -left-4 w-8 h-8 bg-gradient-to-r ${project.gradient} rounded-full opacity-40`}
-                    animate={{
-                      rotate: [360, 0],
-                      scale: [1, 0.8, 1],
-                    }}
-                    transition={{
-                      duration: 6,
-                      repeat: Number.POSITIVE_INFINITY,
-                      ease: easings.organic,
-                      delay: 1,
-                    }}
+                    initial={{ scale: 0 }}
+                    whileInView={{ scale: 1 }}
+                    transition={{ duration: 0.5, delay: 0.5 }}
+                    viewport={{ once: true }}
                   />
                 </motion.div>
               </div>

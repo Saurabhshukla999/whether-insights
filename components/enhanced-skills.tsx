@@ -58,14 +58,12 @@ export function EnhancedSkills() {
       opacity: 0,
       y: 60,
       scale: 0.8,
-      rotateY: -15,
       filter: "blur(10px)",
     },
     animate: {
       opacity: 1,
       y: 0,
       scale: 1,
-      rotateY: 0,
       filter: "blur(0px)",
     },
     transition: {
@@ -171,7 +169,6 @@ export function EnhancedSkills() {
               whileHover={{
                 y: -10,
                 scale: 1.02,
-                rotateY: 5,
                 transition: { duration: 0.3, ease: easings.smooth },
               }}
             >
@@ -182,23 +179,12 @@ export function EnhancedSkills() {
                   transition={{ duration: 0.5, ease: easings.smooth }}
                 />
 
-                {/* Floating icon */}
+                {/* Static icon with subtle hover effect only */}
                 <motion.div
                   className="text-4xl mb-6 relative z-10"
-                  animate={{
-                    rotate: [0, 10, 0, -10, 0],
-                    scale: [1, 1.1, 1],
-                  }}
-                  transition={{
-                    duration: 4,
-                    repeat: Number.POSITIVE_INFINITY,
-                    ease: easings.organic,
-                    delay: index * 0.2,
-                  }}
                   whileHover={{
-                    scale: 1.3,
-                    rotate: 15,
-                    transition: { duration: 0.3 },
+                    scale: 1.1,
+                    transition: { duration: 0.2 },
                   }}
                 >
                   {skillGroup.icon}
@@ -225,12 +211,10 @@ export function EnhancedSkills() {
                       initial={{
                         opacity: 0,
                         scale: 0,
-                        rotate: -180,
                       }}
                       whileInView={{
                         opacity: 1,
                         scale: 1,
-                        rotate: 0,
                       }}
                       transition={{
                         duration: 0.6,
@@ -290,7 +274,7 @@ export function EnhancedSkills() {
           ))}
         </motion.div>
 
-        {/* Enhanced floating skill badges */}
+        {/* Enhanced floating skill badges - removed rotation */}
         <motion.div
           className="mt-20 text-center"
           initial={{ opacity: 0, y: 50 }}
@@ -324,8 +308,8 @@ export function EnhancedSkills() {
                 key={skill}
                 className="px-6 py-3 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-full border border-blue-400/30 backdrop-blur-sm"
                 variants={{
-                  initial: { scale: 0, rotate: -180 },
-                  animate: { scale: 1, rotate: 0 },
+                  initial: { scale: 0, opacity: 0 },
+                  animate: { scale: 1, opacity: 1 },
                 }}
                 transition={{
                   duration: 0.8,
